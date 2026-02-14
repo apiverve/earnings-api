@@ -1,0 +1,133 @@
+openapi: 3.0.4
+info:
+  title: Earnings Report
+  description: >-
+    Earnings Report is a tool for retrieving company financial data including
+    income statement, balance sheet, and cash flow data from SEC filings. It
+    supports lookup by ticker or CIK with optional year and quarter filters.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.0
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+  - url: https://api.apiverve.com/
+paths:
+  /v1/earnings:
+    get:
+      summary: Get Earnings by Ticker
+      description: >-
+        Get earnings and financial data for a company by ticker symbol.
+        Optionally filter by year and quarter.
+      operationId: earnings
+      parameters:
+        - name: ticker
+          in: query
+          schema:
+            type: string
+          required: true
+          description: Stock ticker symbol (e.g. AAPL, MSFT, ADBE)
+          example: ADBE
+        - name: year
+          in: query
+          schema:
+            type: integer
+          required: false
+          description: Fiscal year to retrieve. Defaults to latest available.
+          example: 2025
+        - name: quarter
+          in: query
+          schema:
+            type: integer
+          required: false
+          description: Fiscal quarter to retrieve. Defaults to latest available.
+          example: 2
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: object
+                    description: data
+              example:
+                status: ok
+                error: null
+                data:
+                  ticker: ADBE
+                  company: ADOBE INC.
+                  cik: '0000796343'
+                  fiscalYear: 2025
+                  fiscalQuarter: 2
+                  filingType: 10-Q
+                  filingDate: '2025-06-25'
+                  periodEnd: '2025-05-30'
+                  income:
+                    revenue: 11587000000
+                    costOfRevenue: 1260000000
+                    grossProfit: 10327000000
+                    operatingIncome: 4272000000
+                    netIncome: 3502000000
+                    eps: 8.08
+                    epsBasic: 8.1
+                    sharesOutstanding: 433000000
+                    sharesOutstandingBasic: 432000000
+                    researchAndDevelopment: 2108000000
+                    sellingAndMarketing: 3121000000
+                    sellingGeneralAndAdmin: null
+                    generalAndAdmin: 744000000
+                    interestExpense: 68000000
+                    incomeTax: 781000000
+                    depreciation: 82000000
+                    stockBasedCompensation: null
+                  balance:
+                    totalAssets: 28107000000
+                    currentAssets: 8978000000
+                    cash: 4931000000
+                    receivables: 1735000000
+                    inventory: null
+                    propertyAndEquipment: 1890000000
+                    goodwill: 12830000000
+                    intangibles: 631000000
+                    totalLiabilities: 16659000000
+                    currentLiabilities: 9039000000
+                    accountsPayable: 360000000
+                    longTermDebt: 6166000000
+                    equity: 11448000000
+                    retainedEarnings: 41744000000
+                  cashFlow:
+                    operatingCashFlow: 4673000000
+                    capitalExpenditures: 73000000
+                    freeCashFlow: 4600000000
+                    investingCashFlow: -762000000
+                    financingCashFlow: -6629000000
+                    dividendsPaid: null
+                    shareRepurchases: 6750000000
+                  lastUpdated: '2026-02-05T08:00:00.000Z'
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occurred, try again later
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+  - api_key: []
