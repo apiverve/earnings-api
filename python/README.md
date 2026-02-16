@@ -44,7 +44,11 @@ from apiverve_earningsreport.apiClient import EarningsAPIClient
 # Initialize the client with your APIVerve API key
 api = EarningsAPIClient("[YOUR_API_KEY]")
 
-query = { "ticker": "ADBE", "year": 2025, "quarter": 2 }
+query = {
+    "ticker": "ADBE",
+    "year": 2025,
+    "quarter": 2
+}
 
 try:
     # Make the API call
@@ -82,7 +86,11 @@ Using the API client, you can perform requests to the API.
 ###### Define Query
 
 ```python
-query = { "ticker": "ADBE", "year": 2025, "quarter": 2 }
+query = {
+    "ticker": "ADBE",
+    "year": 2025,
+    "quarter": 2
+}
 ```
 
 ###### Simple Request
@@ -172,7 +180,11 @@ from apiverve_earningsreport.apiClient import EarningsAPIClient, EarningsAPIClie
 
 api = EarningsAPIClient("[YOUR_API_KEY]")
 
-query = { "ticker": "ADBE", "year": 2025, "quarter": 2 }
+query = {
+    "ticker": "ADBE",
+    "year": 2025,
+    "quarter": 2
+}
 
 try:
     result = api.execute(query)
@@ -193,7 +205,11 @@ from apiverve_earningsreport.apiClient import EarningsAPIClient, EarningsAPIClie
 
 api = EarningsAPIClient("[YOUR_API_KEY]")
 
-query = { "ticker": "ADBE", "year": 2025, "quarter": 2 }
+query = {
+    "ticker": "ADBE",
+    "year": 2025,
+    "quarter": 2
+}
 
 try:
     result = api.execute(query)
@@ -227,7 +243,11 @@ The client supports the context manager protocol for automatic resource cleanup:
 ```python
 from apiverve_earningsreport.apiClient import EarningsAPIClient, EarningsAPIClientError
 
-query = { "ticker": "ADBE", "year": 2025, "quarter": 2 }
+query = {
+    "ticker": "ADBE",
+    "year": 2025,
+    "quarter": 2
+}
 
 # Using context manager ensures proper cleanup
 with EarningsAPIClient("[YOUR_API_KEY]") as api:
@@ -253,7 +273,11 @@ from apiverve_earningsreport.apiClient import EarningsAPIClient
 # Enable debug mode
 api = EarningsAPIClient("[YOUR_API_KEY]", debug=True)
 
-query = { "ticker": "ADBE", "year": 2025, "quarter": 2 }
+query = {
+    "ticker": "ADBE",
+    "year": 2025,
+    "quarter": 2
+}
 
 # Debug information will be printed to console
 result = api.execute(query)
@@ -268,8 +292,13 @@ from apiverve_earningsreport.apiClient import EarningsAPIClient
 
 api = EarningsAPIClient("[YOUR_API_KEY]")
 
+query = {
+    "ticker": "ADBE",
+    "year": 2025,
+    "quarter": 2
+}
+
 try:
-    query = { "ticker": "ADBE", "year": 2025, "quarter": 2 }
     result = api.execute(query)
     print(result)
 finally:
