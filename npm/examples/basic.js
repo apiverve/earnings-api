@@ -16,7 +16,7 @@ const api = new earningsAPI({
 // Example query
 var query = {
   ticker: "ADBE",
-  year: 2025,
+  year: 2024,
   quarter: 2
 };
 
