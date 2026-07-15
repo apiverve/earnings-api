@@ -61,7 +61,7 @@ Using the API is simple. All you have to do is make a request. The API will retu
 ```javascript
 var query = {
   ticker: "ADBE",
-  year: 2025,
+  year: 2024,
   quarter: 2
 };
 
@@ -83,7 +83,7 @@ You can also use promises to make requests. The API returns a promise that you c
 ```javascript
 var query = {
   ticker: "ADBE",
-  year: 2025,
+  year: 2024,
   quarter: 2
 };
 
@@ -106,7 +106,7 @@ You can also use async/await to make requests. The API returns a promise that yo
 async function makeRequest() {
     var query = {
   ticker: "ADBE",
-  year: 2025,
+  year: 2024,
   quarter: 2
 };
 
@@ -179,6 +179,12 @@ async function makeRequest() {
       "financingCashFlow": -6629000000,
       "dividendsPaid": null,
       "shareRepurchases": 6750000000
+    },
+    "metrics": {
+      "grossMargin": 89.12,
+      "operatingMargin": 36.87,
+      "netMargin": 30.22,
+      "revenueFormatted": "$11.59B"
     },
     "lastUpdated": "2026-02-05T08:00:00.000Z"
   }
