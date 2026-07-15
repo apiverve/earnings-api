@@ -38,7 +38,7 @@ paths:
             type: integer
           required: false
           description: Fiscal year to retrieve. Defaults to latest available.
-          example: 2025
+          example: 2024
         - name: quarter
           in: query
           schema:
@@ -116,6 +116,11 @@ paths:
                     financingCashFlow: -6629000000
                     dividendsPaid: null
                     shareRepurchases: 6750000000
+                  metrics:
+                    grossMargin: 89.12
+                    operatingMargin: 36.87
+                    netMargin: 30.22
+                    revenueFormatted: $11.59B
                   lastUpdated: '2026-02-05T08:00:00.000Z'
         '401':
           description: Your request was not authorized, or your API Key was invalid
