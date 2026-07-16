@@ -25,6 +25,9 @@ namespace APIVerve.API.EarningsReport
 
         [JsonProperty("data")]
         public Data Data { get; set; }
+
+        [JsonProperty("premium")]
+        public Premium Premium { get; set; }
     }
 
     public partial class Data
@@ -39,19 +42,19 @@ namespace APIVerve.API.EarningsReport
         public string Cik { get; set; }
 
         [JsonProperty("fiscalYear")]
-        public long FiscalYear { get; set; }
+        public long? FiscalYear { get; set; }
 
         [JsonProperty("fiscalQuarter")]
-        public long FiscalQuarter { get; set; }
+        public long? FiscalQuarter { get; set; }
 
         [JsonProperty("filingType")]
         public string FilingType { get; set; }
 
         [JsonProperty("filingDate")]
-        public DateTimeOffset FilingDate { get; set; }
+        public DateTimeOffset? FilingDate { get; set; }
 
         [JsonProperty("periodEnd")]
-        public DateTimeOffset PeriodEnd { get; set; }
+        public DateTimeOffset? PeriodEnd { get; set; }
 
         [JsonProperty("income")]
         public Dictionary<string, double?> Income { get; set; }
@@ -62,31 +65,61 @@ namespace APIVerve.API.EarningsReport
         [JsonProperty("cashFlow")]
         public CashFlow CashFlow { get; set; }
 
+        [JsonProperty("metrics")]
+        public Metrics Metrics { get; set; }
+
         [JsonProperty("lastUpdated")]
-        public DateTimeOffset LastUpdated { get; set; }
+        public DateTimeOffset? LastUpdated { get; set; }
     }
 
     public partial class CashFlow
     {
         [JsonProperty("operatingCashFlow")]
-        public long OperatingCashFlow { get; set; }
+        public long? OperatingCashFlow { get; set; }
 
         [JsonProperty("capitalExpenditures")]
-        public long CapitalExpenditures { get; set; }
+        public long? CapitalExpenditures { get; set; }
 
         [JsonProperty("freeCashFlow")]
-        public long FreeCashFlow { get; set; }
+        public long? FreeCashFlow { get; set; }
 
         [JsonProperty("investingCashFlow")]
-        public long InvestingCashFlow { get; set; }
+        public long? InvestingCashFlow { get; set; }
 
         [JsonProperty("financingCashFlow")]
-        public long FinancingCashFlow { get; set; }
+        public long? FinancingCashFlow { get; set; }
 
         [JsonProperty("dividendsPaid")]
         public object DividendsPaid { get; set; }
 
         [JsonProperty("shareRepurchases")]
-        public long ShareRepurchases { get; set; }
+        public long? ShareRepurchases { get; set; }
+    }
+
+    public partial class Metrics
+    {
+        [JsonProperty("grossMargin")]
+        public double? GrossMargin { get; set; }
+
+        [JsonProperty("operatingMargin")]
+        public double? OperatingMargin { get; set; }
+
+        [JsonProperty("netMargin")]
+        public double? NetMargin { get; set; }
+
+        [JsonProperty("revenueFormatted")]
+        public string RevenueFormatted { get; set; }
+    }
+
+    public partial class Premium
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("upgrade_url")]
+        public Uri UpgradeUrl { get; set; }
+
+        [JsonProperty("locked_fields")]
+        public string[] LockedFields { get; set; }
     }
 }
