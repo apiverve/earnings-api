@@ -191,11 +191,86 @@ x-api-key: YOUR_API_KEY_HERE
 Get your API key: [https://apiverve.com](https://apiverve.com)
 
 ### Response Format
-All responses are JSON with this structure:
+
+Every APIVerve endpoint returns the same envelope — check `status`, then read `data`:
+
 ```json
 {
   "status": "ok",
+  "error": null,
   "data": { ... }
+}
+```
+
+### Example Response
+
+A real response from the Earnings Report API:
+
+```json
+{
+  "status": "ok",
+  "error": null,
+  "data": {
+    "ticker": "ADBE",
+    "company": "ADOBE INC.",
+    "cik": "0000796343",
+    "fiscalYear": 2025,
+    "fiscalQuarter": 2,
+    "filingType": "10-Q",
+    "filingDate": "2025-06-25",
+    "periodEnd": "2025-05-30",
+    "income": {
+      "revenue": 11587000000,
+      "costOfRevenue": 1260000000,
+      "grossProfit": 10327000000,
+      "operatingIncome": 4272000000,
+      "netIncome": 3502000000,
+      "eps": 8.08,
+      "epsBasic": 8.1,
+      "sharesOutstanding": 433000000,
+      "sharesOutstandingBasic": 432000000,
+      "researchAndDevelopment": 2108000000,
+      "sellingAndMarketing": 3121000000,
+      "sellingGeneralAndAdmin": null,
+      "generalAndAdmin": 744000000,
+      "interestExpense": 68000000,
+      "incomeTax": 781000000,
+      "depreciation": 82000000,
+      "stockBasedCompensation": null
+    },
+    "balance": {
+      "totalAssets": 28107000000,
+      "currentAssets": 8978000000,
+      "cash": 4931000000,
+      "receivables": 1735000000,
+      "inventory": null,
+      "propertyAndEquipment": 1890000000,
+      "goodwill": 12830000000,
+      "intangibles": 631000000,
+      "totalLiabilities": 16659000000,
+      "currentLiabilities": 9039000000,
+      "accountsPayable": 360000000,
+      "longTermDebt": 6166000000,
+      "equity": 11448000000,
+      "retainedEarnings": 41744000000
+    },
+    "cashFlow": {
+      "operatingCashFlow": 4673000000,
+      "capitalExpenditures": 73000000,
+      "freeCashFlow": 4600000000,
+      "investingCashFlow": -762000000,
+      "financingCashFlow": -6629000000,
+      "dividendsPaid": null,
+      "shareRepurchases": 6750000000
+    },
+    "metrics": {
+      "grossMargin": 89.12,
+      "operatingMargin": 36.87,
+      "netMargin": 30.22,
+      "revenueFormatted": "$11.59B"
+    },
+    "lastUpdated": "2026-02-05T08:00:00.000Z"
+  }
 }
 ```
 
