@@ -20,12 +20,12 @@ namespace APIVerve.API.EarningsReport
         /// Fiscal year to retrieve. Defaults to latest available.
         /// </summary>
         [JsonProperty("year")]
-        public string Year { get; set; }
+        public int? Year { get; set; }
 
         /// <summary>
         /// Fiscal quarter to retrieve. Defaults to latest available.
         /// </summary>
         [JsonProperty("quarter")]
-        public string Quarter { get; set; }
+        public int? Quarter { get; set; }
     }
 }
