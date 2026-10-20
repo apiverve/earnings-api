@@ -1,13 +1,12 @@
 Earnings Report API
 ============
 
-Earnings Report is a tool for retrieving company financial data including income statement, balance sheet, and cash flow data from SEC filings. It supports lookup by ticker or CIK with optional year and quarter filters.
+Earnings Report returns a company's complete financial statements - income statement, balance sheet and cash flow together - in a single call from SEC filings, making it a one-stop earnings API for fundamental stock data. Look up by ticker or CIK; paid plans add calculated margins and year and quarter filters. For a single focused statement, see the Income Statement, Balance Sheet, Cash Flow and Financial Ratios APIs.
 
-![Build Status](https://img.shields.io/badge/build-passing-green)
-![Code Climate](https://img.shields.io/badge/maintainability-B-purple)
-![Prod Ready](https://img.shields.io/badge/production-ready-blue)
 
-This is a Python API Wrapper for the [Earnings Report API](https://apiverve.com/marketplace/earnings?utm_source=pypi&utm_medium=readme)
+[![PyPI version](https://img.shields.io/pypi/v/apiverve-earningsreport.svg)](https://pypi.org/project/apiverve-earningsreport/)
+
+This is a Python wrapper for the [Earnings Report API](https://apiverve.com/marketplace/earnings?utm_source=pypi&utm_medium=referral&utm_content=readme)
 
 ---
 
@@ -29,8 +28,8 @@ pip3 install apiverve-earningsreport
 
 ## Configuration
 
-Before using the earnings API client, you have to setup your account and obtain your API Key.
-You can get it by signing up at [https://apiverve.com](https://apiverve.com?utm_source=pypi&utm_medium=readme)
+Before using the Earnings Report API client, you have to setup your account and obtain your API Key.
+You can get it by signing up at [https://apiverve.com](https://apiverve.com?utm_source=pypi&utm_medium=referral&utm_content=readme)
 
 ---
 
@@ -46,8 +45,8 @@ api = EarningsAPIClient("[YOUR_API_KEY]")
 
 query = {
     "ticker": "ADBE",
-    "year": 2025,
-    "quarter": 2
+    "year": 0,
+    "quarter": 0
 }
 
 try:
@@ -64,7 +63,7 @@ except Exception as e:
 
 ## Usage
 
-The Earnings Report API documentation is found here: [https://docs.apiverve.com/ref/earnings](https://docs.apiverve.com/ref/earnings?utm_source=pypi&utm_medium=readme).
+The Earnings Report API documentation is found here: [https://docs.apiverve.com/ref/earnings](https://docs.apiverve.com/ref/earnings?utm_source=pypi&utm_medium=referral&utm_content=readme).
 You can find parameters, example responses, and status codes documented here.
 
 ### Setup
@@ -88,8 +87,8 @@ Using the API client, you can perform requests to the API.
 ```python
 query = {
     "ticker": "ADBE",
-    "year": 2025,
-    "quarter": 2
+    "year": 0,
+    "quarter": 0
 }
 ```
 
@@ -113,56 +112,63 @@ print(result)
     "ticker": "ADBE",
     "company": "ADOBE INC.",
     "cik": "0000796343",
-    "fiscalYear": 2025,
+    "fiscalYear": 2026,
     "fiscalQuarter": 2,
     "filingType": "10-Q",
-    "filingDate": "2025-06-25",
-    "periodEnd": "2025-05-30",
+    "filingDate": "2026-06-15",
+    "periodEnd": "2026-05-29",
     "income": {
-      "revenue": 11587000000,
-      "costOfRevenue": 1260000000,
-      "grossProfit": 10327000000,
-      "operatingIncome": 4272000000,
-      "netIncome": 3502000000,
-      "eps": 8.08,
-      "epsBasic": 8.1,
-      "sharesOutstanding": 433000000,
-      "sharesOutstandingBasic": 432000000,
-      "researchAndDevelopment": 2108000000,
-      "sellingAndMarketing": 3121000000,
+      "revenue": 6618000000,
+      "costOfRevenue": 715000000,
+      "grossProfit": 5903000000,
+      "operatingIncome": 2238000000,
+      "netIncome": 1712000000,
+      "eps": 4.25,
+      "epsBasic": 4.26,
+      "sharesOutstanding": 402500000,
+      "sharesOutstandingBasic": 402400000,
+      "researchAndDevelopment": null,
+      "sellingAndMarketing": 1884000000,
       "sellingGeneralAndAdmin": null,
-      "generalAndAdmin": 744000000,
-      "interestExpense": 68000000,
-      "incomeTax": 781000000,
-      "depreciation": 82000000,
-      "stockBasedCompensation": null
+      "generalAndAdmin": 546000000,
+      "interestExpense": null,
+      "incomeTax": 526000000,
+      "depreciation": 367000000,
+      "stockBasedCompensation": 1043000000
     },
     "balance": {
-      "totalAssets": 28107000000,
-      "currentAssets": 8978000000,
-      "cash": 4931000000,
-      "receivables": 1735000000,
+      "totalAssets": 29933000000,
+      "currentAssets": 9068000000,
+      "cash": 4919000000,
+      "receivables": 1993000000,
       "inventory": null,
-      "propertyAndEquipment": 1890000000,
-      "goodwill": 12830000000,
-      "intangibles": 631000000,
-      "totalLiabilities": 16659000000,
-      "currentLiabilities": 9039000000,
-      "accountsPayable": 360000000,
-      "longTermDebt": 6166000000,
-      "equity": 11448000000,
-      "retainedEarnings": 41744000000
+      "propertyAndEquipment": 1870000000,
+      "goodwill": 14041000000,
+      "intangibles": 1012000000,
+      "totalLiabilities": 18415000000,
+      "currentLiabilities": 12078000000,
+      "accountsPayable": 499000000,
+      "longTermDebt": 4802000000,
+      "equity": 11518000000,
+      "retainedEarnings": 48767000000
     },
     "cashFlow": {
-      "operatingCashFlow": 4673000000,
-      "capitalExpenditures": 73000000,
-      "freeCashFlow": 4600000000,
-      "investingCashFlow": -762000000,
-      "financingCashFlow": -6629000000,
+      "operatingCashFlow": 5123000000,
+      "capitalExpenditures": 95000000,
+      "freeCashFlow": 5028000000,
+      "investingCashFlow": -1240000000,
+      "financingCashFlow": -4399000000,
       "dividendsPaid": null,
-      "shareRepurchases": 6750000000
+      "shareRepurchases": 4589000000
     },
-    "lastUpdated": "2026-02-05T08:00:00.000Z"
+    "dividends": null,
+    "lastUpdated": "2026-07-17T23:01:47.364Z",
+    "metrics": {
+      "grossMargin": 89.2,
+      "operatingMargin": 33.82,
+      "netMargin": 25.87,
+      "revenueFormatted": "$6.62B"
+    }
   }
 }
 ```
@@ -182,8 +188,8 @@ api = EarningsAPIClient("[YOUR_API_KEY]")
 
 query = {
     "ticker": "ADBE",
-    "year": 2025,
-    "quarter": 2
+    "year": 0,
+    "quarter": 0
 }
 
 try:
@@ -207,8 +213,8 @@ api = EarningsAPIClient("[YOUR_API_KEY]")
 
 query = {
     "ticker": "ADBE",
-    "year": 2025,
-    "quarter": 2
+    "year": 0,
+    "quarter": 0
 }
 
 try:
@@ -245,8 +251,8 @@ from apiverve_earningsreport.apiClient import EarningsAPIClient, EarningsAPIClie
 
 query = {
     "ticker": "ADBE",
-    "year": 2025,
-    "quarter": 2
+    "year": 0,
+    "quarter": 0
 }
 
 # Using context manager ensures proper cleanup
@@ -275,8 +281,8 @@ api = EarningsAPIClient("[YOUR_API_KEY]", debug=True)
 
 query = {
     "ticker": "ADBE",
-    "year": 2025,
-    "quarter": 2
+    "year": 0,
+    "quarter": 0
 }
 
 # Debug information will be printed to console
@@ -294,8 +300,8 @@ api = EarningsAPIClient("[YOUR_API_KEY]")
 
 query = {
     "ticker": "ADBE",
-    "year": 2025,
-    "quarter": 2
+    "year": 0,
+    "quarter": 0
 }
 
 try:
@@ -310,7 +316,7 @@ finally:
 
 ## Customer Support
 
-Need any assistance? [Get in touch with Customer Support](https://apiverve.com/contact?utm_source=pypi&utm_medium=readme).
+Need any assistance? [Get in touch with Customer Support](https://apiverve.com/contact?utm_source=pypi&utm_medium=referral&utm_content=readme).
 
 ---
 
@@ -321,12 +327,12 @@ Stay up to date by following [@apiverveHQ](https://twitter.com/apiverveHQ) on Tw
 
 ## Legal
 
-All usage of the APIVerve website, API, and services is subject to the [APIVerve Terms of Service](https://apiverve.com/terms?utm_source=pypi&utm_medium=readme) and all legal documents and agreements.
+All usage of the APIVerve website, API, and services is subject to the [APIVerve Terms of Service](https://apiverve.com/terms?utm_source=pypi&utm_medium=referral&utm_content=readme) and all legal documents and agreements.
 
 ---
 
 ## License
-Licensed under the The MIT License (MIT)
+Licensed under the MIT License (MIT)
 
 Copyright (&copy;) 2026 APIVerve, and EvlarSoft LLC
 
