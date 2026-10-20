@@ -1,13 +1,13 @@
-# [Earnings Report API](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+# [Earnings Report API](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 
-Earnings Report is a tool for retrieving company financial data including income statement, balance sheet, and cash flow data from SEC filings. It supports lookup by ticker or CIK with optional year and quarter filters.
+Earnings Report returns a company&#x27;s complete financial statements - income statement, balance sheet and cash flow together - in a single call from SEC filings, making it a one-stop earnings API for fundamental stock data. Look up by ticker or CIK; paid plans add calculated margins and year and quarter filters. For a single focused statement, see the Income Statement, Balance Sheet, Cash Flow and Financial Ratios APIs.
 
 The Earnings Report API provides a simple, reliable way to integrate earnings report functionality into your applications. Built for developers who need production-ready earnings report capabilities without the complexity of building from scratch.
 
-**[View API Details →](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)**
+**[View API Details →](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![API Status](https://img.shields.io/badge/Status-Active-green.svg)](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+[![API Status](https://img.shields.io/badge/Status-Active-green.svg)](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 [![Method](https://img.shields.io/badge/Method-GET-blue.svg)](#)
 [![Platform](https://img.shields.io/badge/Platform-Multi--Platform-orange.svg)](#installation)
 
@@ -161,7 +161,7 @@ go get github.com/apiverve/earnings-api/go
 
 ## Documentation
 
-- 🏠 **API Home:** [Earnings Report API](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+- 🏠 **API Home:** [Earnings Report API](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 - 📚 **API Reference:** [docs.apiverve.com/ref/earnings](https://docs.apiverve.com/ref/earnings)
 - 📖 **OpenAPI Spec:** [openapi.yaml](./openapi.yaml)
 - 💡 **Examples:** [examples/](./examples/)
@@ -214,62 +214,63 @@ A real response from the Earnings Report API:
     "ticker": "ADBE",
     "company": "ADOBE INC.",
     "cik": "0000796343",
-    "fiscalYear": 2025,
+    "fiscalYear": 2026,
     "fiscalQuarter": 2,
     "filingType": "10-Q",
-    "filingDate": "2025-06-25",
-    "periodEnd": "2025-05-30",
+    "filingDate": "2026-06-15",
+    "periodEnd": "2026-05-29",
     "income": {
-      "revenue": 11587000000,
-      "costOfRevenue": 1260000000,
-      "grossProfit": 10327000000,
-      "operatingIncome": 4272000000,
-      "netIncome": 3502000000,
-      "eps": 8.08,
-      "epsBasic": 8.1,
-      "sharesOutstanding": 433000000,
-      "sharesOutstandingBasic": 432000000,
-      "researchAndDevelopment": 2108000000,
-      "sellingAndMarketing": 3121000000,
+      "revenue": 6618000000,
+      "costOfRevenue": 715000000,
+      "grossProfit": 5903000000,
+      "operatingIncome": 2238000000,
+      "netIncome": 1712000000,
+      "eps": 4.25,
+      "epsBasic": 4.26,
+      "sharesOutstanding": 402500000,
+      "sharesOutstandingBasic": 402400000,
+      "researchAndDevelopment": null,
+      "sellingAndMarketing": 1884000000,
       "sellingGeneralAndAdmin": null,
-      "generalAndAdmin": 744000000,
-      "interestExpense": 68000000,
-      "incomeTax": 781000000,
-      "depreciation": 82000000,
-      "stockBasedCompensation": null
+      "generalAndAdmin": 546000000,
+      "interestExpense": null,
+      "incomeTax": 526000000,
+      "depreciation": 367000000,
+      "stockBasedCompensation": 1043000000
     },
     "balance": {
-      "totalAssets": 28107000000,
-      "currentAssets": 8978000000,
-      "cash": 4931000000,
-      "receivables": 1735000000,
+      "totalAssets": 29933000000,
+      "currentAssets": 9068000000,
+      "cash": 4919000000,
+      "receivables": 1993000000,
       "inventory": null,
-      "propertyAndEquipment": 1890000000,
-      "goodwill": 12830000000,
-      "intangibles": 631000000,
-      "totalLiabilities": 16659000000,
-      "currentLiabilities": 9039000000,
-      "accountsPayable": 360000000,
-      "longTermDebt": 6166000000,
-      "equity": 11448000000,
-      "retainedEarnings": 41744000000
+      "propertyAndEquipment": 1870000000,
+      "goodwill": 14041000000,
+      "intangibles": 1012000000,
+      "totalLiabilities": 18415000000,
+      "currentLiabilities": 12078000000,
+      "accountsPayable": 499000000,
+      "longTermDebt": 4802000000,
+      "equity": 11518000000,
+      "retainedEarnings": 48767000000
     },
     "cashFlow": {
-      "operatingCashFlow": 4673000000,
-      "capitalExpenditures": 73000000,
-      "freeCashFlow": 4600000000,
-      "investingCashFlow": -762000000,
-      "financingCashFlow": -6629000000,
+      "operatingCashFlow": 5123000000,
+      "capitalExpenditures": 95000000,
+      "freeCashFlow": 5028000000,
+      "investingCashFlow": -1240000000,
+      "financingCashFlow": -4399000000,
       "dividendsPaid": null,
-      "shareRepurchases": 6750000000
+      "shareRepurchases": 4589000000
     },
+    "dividends": null,
+    "lastUpdated": "2026-07-17T23:01:47.364Z",
     "metrics": {
-      "grossMargin": 89.12,
-      "operatingMargin": 36.87,
-      "netMargin": 30.22,
-      "revenueFormatted": "$11.59B"
-    },
-    "lastUpdated": "2026-02-05T08:00:00.000Z"
+      "grossMargin": 89.2,
+      "operatingMargin": 33.82,
+      "netMargin": 25.87,
+      "revenueFormatted": "$6.62B"
+    }
   }
 }
 ```
@@ -278,7 +279,7 @@ A real response from the Earnings Report API:
 
 ## Support & Community
 
-- 🏠 **API Home**: [Earnings Report API](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+- 🏠 **API Home**: [Earnings Report API](https://apiverve.com/marketplace/earnings?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 - 💬 **Support**: [https://apiverve.com/contact](https://apiverve.com/contact)
 - 🐛 **Issues**: [GitHub Issues](../../issues)
 - 📖 **Documentation**: [https://docs.apiverve.com](https://docs.apiverve.com)
