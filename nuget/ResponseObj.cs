@@ -65,11 +65,14 @@ namespace APIVerve.API.EarningsReport
         [JsonProperty("cashFlow")]
         public CashFlow CashFlow { get; set; }
 
-        [JsonProperty("metrics")]
-        public Metrics Metrics { get; set; }
+        [JsonProperty("dividends")]
+        public object Dividends { get; set; }
 
         [JsonProperty("lastUpdated")]
         public DateTimeOffset? LastUpdated { get; set; }
+
+        [JsonProperty("metrics")]
+        public Metrics Metrics { get; set; }
     }
 
     public partial class CashFlow
