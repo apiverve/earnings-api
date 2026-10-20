@@ -36,8 +36,9 @@ declare module '@apiverve/earnings' {
       income:        { [key: string]: number | null };
       balance:       { [key: string]: number | null };
       cashFlow:      CashFlow;
-      metrics:       Metrics;
+      dividends:     null;
       lastUpdated:   Date | null;
+      metrics:       Metrics;
   }
   
   interface CashFlow {
