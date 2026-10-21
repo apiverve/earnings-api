@@ -15,11 +15,11 @@ use APIVerve\Earnings\Exceptions\ValidationException;
  * @example Basic usage
  * ```php
  * $client = new Client('your_api_key');
- * $response = $client->execute(['ticker' => 'ADBE', 'year' => 2024, 'quarter' => 2]);
+ * $response = $client->execute(['ticker' => 'ADBE', 'year' => 0, 'quarter' => 0]);
  * print_r($response);
  * ```
  *
- * @see https://apiverve.com/marketplace/earnings?utm_source=php&utm_medium=readme
+ * @see https://apiverve.com/marketplace/earnings?utm_source=php&utm_medium=referral&utm_content=readme
  */
 class Client
 {
