@@ -1,6 +1,6 @@
 {
   "name": "@apiverve/earnings",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Earnings Report returns a company's complete financial statements - income statement, balance sheet and cash flow together - in a single call from SEC filings, making it a one-stop earnings API for fundamental stock data. Look up by ticker or CIK; paid plans add calculated margins and year and quarter filters. For a single focused statement, see the Income Statement, Balance Sheet, Cash Flow and Financial Ratios APIs.",
   "main": "index.js",
   "types": "index.d.ts",
