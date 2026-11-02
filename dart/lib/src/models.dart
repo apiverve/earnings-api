@@ -6,22 +6,50 @@ class EarningsResponse {
   final dynamic error;
   final EarningsData? data;
 
+  /// Set only when the current plan locks one or more fields; null otherwise.
+  final PremiumInfo? premium;
+
   EarningsResponse({
     required this.status,
     this.error,
     this.data,
+    this.premium,
   });
 
   factory EarningsResponse.fromJson(Map<String, dynamic> json) => EarningsResponse(
     status: json['status'] as String? ?? '',
     error: json['error'],
     data: json['data'] != null ? EarningsData.fromJson(json['data']) : null,
+    premium: json['premium'] != null ? PremiumInfo.fromJson(json['premium']) : null,
   );
 
   Map<String, dynamic> toJson() => {
     'status': status,
     if (error != null) 'error': error,
     if (data != null) 'data': data,
+    if (premium != null) 'premium': premium!.toJson(),
+  };
+}
+
+/// Describes fields the current plan does not unlock. Locked fields arrive as null
+/// in [data], and [lockedFields] names them (nested ones use dot paths).
+class PremiumInfo {
+  final String? message;
+  final String? upgradeUrl;
+  final List<String>? lockedFields;
+
+  PremiumInfo({this.message, this.upgradeUrl, this.lockedFields});
+
+  factory PremiumInfo.fromJson(Map<String, dynamic> json) => PremiumInfo(
+    message: json['message'] as String?,
+    upgradeUrl: json['upgrade_url'] as String?,
+    lockedFields: (json['locked_fields'] as List?)?.map((e) => e.toString()).toList(),
+  );
+
+  Map<String, dynamic> toJson() => {
+    if (message != null) 'message': message,
+    if (upgradeUrl != null) 'upgrade_url': upgradeUrl,
+    if (lockedFields != null) 'locked_fields': lockedFields,
   };
 }
 
@@ -31,15 +59,17 @@ class EarningsData {
   String? ticker;
   String? company;
   String? cik;
-  int? fiscalYear;
-  int? fiscalQuarter;
+  num? fiscalYear;
+  num? fiscalQuarter;
   String? filingType;
   String? filingDate;
   String? periodEnd;
   EarningsDataIncome? income;
   EarningsDataBalance? balance;
   EarningsDataCashflow? cashFlow;
+  dynamic dividends;
   String? lastUpdated;
+  EarningsDataMetrics? metrics;
 
   EarningsData({
     this.ticker,
@@ -53,7 +83,9 @@ class EarningsData {
     this.income,
     this.balance,
     this.cashFlow,
+    this.dividends,
     this.lastUpdated,
+    this.metrics,
   });
 
   factory EarningsData.fromJson(Map<String, dynamic> json) => EarningsData(
@@ -68,28 +100,30 @@ class EarningsData {
       income: json['income'] != null ? EarningsDataIncome.fromJson(json['income']) : null,
       balance: json['balance'] != null ? EarningsDataBalance.fromJson(json['balance']) : null,
       cashFlow: json['cashFlow'] != null ? EarningsDataCashflow.fromJson(json['cashFlow']) : null,
+      dividends: json['dividends'],
       lastUpdated: json['lastUpdated'],
+      metrics: json['metrics'] != null ? EarningsDataMetrics.fromJson(json['metrics']) : null,
     );
 }
 
 class EarningsDataIncome {
-  int? revenue;
-  int? costOfRevenue;
-  int? grossProfit;
-  int? operatingIncome;
-  int? netIncome;
-  double? eps;
-  double? epsBasic;
-  int? sharesOutstanding;
-  int? sharesOutstandingBasic;
-  int? researchAndDevelopment;
-  int? sellingAndMarketing;
+  num? revenue;
+  num? costOfRevenue;
+  num? grossProfit;
+  num? operatingIncome;
+  num? netIncome;
+  num? eps;
+  num? epsBasic;
+  num? sharesOutstanding;
+  num? sharesOutstandingBasic;
+  dynamic researchAndDevelopment;
+  num? sellingAndMarketing;
   dynamic sellingGeneralAndAdmin;
-  int? generalAndAdmin;
-  int? interestExpense;
-  int? incomeTax;
-  int? depreciation;
-  dynamic stockBasedCompensation;
+  num? generalAndAdmin;
+  dynamic interestExpense;
+  num? incomeTax;
+  num? depreciation;
+  num? stockBasedCompensation;
 
   EarningsDataIncome({
     this.revenue,
@@ -133,20 +167,20 @@ class EarningsDataIncome {
 }
 
 class EarningsDataBalance {
-  int? totalAssets;
-  int? currentAssets;
-  int? cash;
-  int? receivables;
+  num? totalAssets;
+  num? currentAssets;
+  num? cash;
+  num? receivables;
   dynamic inventory;
-  int? propertyAndEquipment;
-  int? goodwill;
-  int? intangibles;
-  int? totalLiabilities;
-  int? currentLiabilities;
-  int? accountsPayable;
-  int? longTermDebt;
-  int? equity;
-  int? retainedEarnings;
+  num? propertyAndEquipment;
+  num? goodwill;
+  num? intangibles;
+  num? totalLiabilities;
+  num? currentLiabilities;
+  num? accountsPayable;
+  num? longTermDebt;
+  num? equity;
+  num? retainedEarnings;
 
   EarningsDataBalance({
     this.totalAssets,
@@ -184,13 +218,13 @@ class EarningsDataBalance {
 }
 
 class EarningsDataCashflow {
-  int? operatingCashFlow;
-  int? capitalExpenditures;
-  int? freeCashFlow;
-  int? investingCashFlow;
-  int? financingCashFlow;
+  num? operatingCashFlow;
+  num? capitalExpenditures;
+  num? freeCashFlow;
+  num? investingCashFlow;
+  num? financingCashFlow;
   dynamic dividendsPaid;
-  int? shareRepurchases;
+  num? shareRepurchases;
 
   EarningsDataCashflow({
     this.operatingCashFlow,
@@ -210,6 +244,27 @@ class EarningsDataCashflow {
       financingCashFlow: json['financingCashFlow'],
       dividendsPaid: json['dividendsPaid'],
       shareRepurchases: json['shareRepurchases'],
+    );
+}
+
+class EarningsDataMetrics {
+  num? grossMargin;
+  num? operatingMargin;
+  num? netMargin;
+  String? revenueFormatted;
+
+  EarningsDataMetrics({
+    this.grossMargin,
+    this.operatingMargin,
+    this.netMargin,
+    this.revenueFormatted,
+  });
+
+  factory EarningsDataMetrics.fromJson(Map<String, dynamic> json) => EarningsDataMetrics(
+      grossMargin: json['grossMargin'],
+      operatingMargin: json['operatingMargin'],
+      netMargin: json['netMargin'],
+      revenueFormatted: json['revenueFormatted'],
     );
 }
 

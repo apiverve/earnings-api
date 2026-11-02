@@ -46,7 +46,7 @@ final _formatPatterns = {
 
 /// Earnings Report API client.
 ///
-/// For more information, visit: https://apiverve.com/marketplace/earnings?utm_source=dart&utm_medium=readme
+/// For more information, visit: https://apiverve.com/marketplace/earnings?utm_source=dart&utm_medium=referral&utm_content=readme
 ///
 /// Parameters:
 /// * [ticker] (required) - Stock ticker symbol (e.g. AAPL, MSFT, ADBE) [minLength: 1, maxLength: 5]
